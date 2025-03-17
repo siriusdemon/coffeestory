@@ -56,6 +56,12 @@ RuleMap Rules = {
     { "marm2", {{2, {"matt", "boss", "dmg", "ignore"}}}},
     { "marm3", {{3, {"matt", "boss", "dmg", "ignore"}}}},
     // normal armor
+    { "int2", {{2, {"int", "all"}}} },
+    { "str2", {{2, {"str", "all"}}} },
+    { "luk2", {{2, {"luk", "all"}}} },
+    { "dex2", {{2, {"dex", "all"}}} },
+    { "all2", {{2, {"all"}}} },
+    { "hp2", {{2, {"hp"}}} },
     { "int3", {{3, {"int", "all"}}} },
     { "str3", {{3, {"str", "all"}}} },
     { "luk3", {{3, {"luk", "all"}}} },
