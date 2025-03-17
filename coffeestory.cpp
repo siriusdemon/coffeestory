@@ -269,7 +269,7 @@ static void match(int times, const std::vector<Rule>& groups, bool is_red = fals
             texts.push_back(img2text(line));
         }
 
-        printf("[%d/%d]: %s, %s, %s]\n", i+1, times, texts[0].c_str(), texts[1].c_str(), texts[2].c_str());
+        printf("[%d/%d]: %s, %s, %s\n", i+1, times, texts[0].c_str(), texts[1].c_str(), texts[2].c_str());
 
         // Filter out "unknown" texts
         texts.erase(std::remove(texts.begin(), texts.end(), "unknown"), texts.end());
