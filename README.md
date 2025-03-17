@@ -25,6 +25,9 @@ coffeestory.exe [red/blue] [times] [target]
 coffeestory.exe blue 1000 att3
 ```
 
+[Demo on Youtube](https://youtu.be/jwFR9YFj2WY)
+
+
 There are predefined targets for convenience. You can modify the coffeestory.h to add your own one.
 
 ### normal
