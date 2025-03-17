@@ -46,7 +46,7 @@ There are predefined targets for convenience. You can modify the coffeestory.h t
 |target name  |  meaning									|
 |-------------|---------------------------------------------|
 | att3		  | 3 lines of Attack							|
-| att2		  | 2 lines of Magic Attack						|
+| att2		  | 2 lines of Attack						|
 | matt3		  | 3 lines of Magic Attack						|
 | matt2		  | 2 lines of Magic Attack						|
 | attb		  | 3 lines of Attack/Boss						|
@@ -61,7 +61,7 @@ There are predefined targets for convenience. You can modify the coffeestory.h t
 ### glove
 |target name  |  meaning									|
 |-------------|---------------------------------------------|
-| crtdmg1	  | 1 lines of critical damage					|
+| crtdmg1	  | 1 line  of critical damage					|
 | crtdmg2	  | 2 lines of critical damage					|
 | crtdmg3	  | 3 lines of critical damage					|
 | lukcrtdmg2  | 2 lines of critical damage/luk/all			|
@@ -81,7 +81,7 @@ There are predefined targets for convenience. You can modify the coffeestory.h t
 ### cd hat
 |target name  |  meaning									|
 |-------------|---------------------------------------------|
-| cd1		  | 1 lines of skill cooldown					|
+| cd1		  | 1 line  of skill cooldown					|
 | cd2		  | 2 lines of skill cooldown					|
 | cd3		  | 3 lines of skill cooldown					|
 | lukcd2	  | 2 lines of skill cooldown/luk				|
@@ -102,10 +102,10 @@ There are predefined targets for convenience. You can modify the coffeestory.h t
 
 |target name  |  meaning											|
 |-------------|-----------------------------------------------------|
-| md1		  | 1 lines of meso/drop								|
+| md1		  | 1 line  of meso/drop								|
 | md2		  | 2 lines of meso/drop								|
 | md3		  | 3 lines of meso/drop								|
-| d1		  | 1 lines of drop										|
+| d1		  | 1 line  of drop										|
 | d2		  | 2 lines of drop										|
 | d3		  | 3 lines of drop										|
 | lukmd2	  | 2 lines of meso/drop/luk/all						|
