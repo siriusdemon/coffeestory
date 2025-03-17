@@ -17,6 +17,8 @@ However, I am not certain whether Nexon will classify this as a prohibited progr
 
 
 ### Usage
+Make sure your maplestory resolution is `1366x768`, or it may not work as expected.
+
 ```bash
 coffeestory.exe [red/blue] [times] [target]
 # e.g. for a 3 Att weapon
