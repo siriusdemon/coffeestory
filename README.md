@@ -72,7 +72,7 @@ There are predefined targets for convenience. You can modify the coffeestory.h t
 | dexcrtdmg3  | 3 lines of critical damage/dex/all			|
 | intcrtdmg2  | 2 lines of critical damage/int/all			|
 | intcrtdmg3  | 3 lines of critical damage/int/all			|
-| allcrtdmg3  | 3 lines of critical damage/all				|
+| allcrtdmg2  | 2 lines of critical damage/all				|
 | allcrtdmg3  | 3 lines of critical damage/all				|
 | hpcrtdmg2   | 2 lines of critical damage/hp				|
 | hpcrtdmg3   | 3 lines of critical damage/hp				|
