@@ -10,23 +10,28 @@ However, I am not certain whether Nexon will classify this as a prohibited progr
 
 
 
-### Building
+## Building
 
 + Visual Studio 2022 toolchains
 + Opencv
 
 
-### Usage
-Make sure your maplestory resolution is `1366x768`, or it may not work as expected.
+## Usage
+You should use it at an admin shell and make sure your maplestory resolution is `1366x768`, or it may not work as expected.
 
 ```bash
+# for potentials
 coffeestory.exe [red/blue] [times] [target]
 # e.g. for a 3 Att weapon
 coffeestory.exe blue 1000 att3
+
+# for rebirth flame
+coffeestory.exe flame [times] [target]
 ```
 
 [Demo on Youtube](https://youtu.be/9WOzAgzxhNk)
 
+## Predefined Potential Targets
 
 There are predefined targets for convenience. You can modify the coffeestory.h to add your own one.
 
@@ -125,3 +130,32 @@ There are predefined targets for convenience. You can modify the coffeestory.h t
 | allmd3      | 3 lines of meso/drop/all	 or 2 lines of meso/drop|
 | lukmd3      | 3 lines of meso/drop/luk/all or 2 lines of meso/drop|
 | hpmd3       | 3 lines of meso/drop/all	 or 2 lines of meso/drop|
+
+## Predefined Flame Targets
+
+|target name  |  meaning											|
+|-------------|-----------------------------------------------------|
+| allatt	  | 2 line  of att/all									|
+| hpatt		  | 2 lines of att/hp									|
+| lukatt	  | 2 lines of att/luk/all								|
+| stratt	  | 2 lines of att/str/all								|
+| intatt	  | 2 lines of att/int/all								|
+| dexatt	  | 2 lines of att/dex/all								|
+| lukatt3	  | 3 lines of att/luk/all								|
+| stratt3	  | 3 lines of att/str/all								|
+| intatt3	  | 3 lines of att/int/all								|
+| dexatt3	  | 3 lines of att/dex/all								|
+| dexarm3	  | 3 lines of att/dex/all/boss/dmg						|
+| intarm3	  | 3 lines of att/int/all/boss/dmg						|
+| strarm3	  | 3 lines of att/str/all/boss/dmg						|
+| lukarm3	  | 3 lines of att/luk/all/boss/dmg						|
+| hparm3	  | 3 lines of att/hp/boss/dmg							|
+| allarm3	  | 3 lines of att/all/boss/dmg							|
+| arm2		  | 3 lines of att/boss/dmg								|
+| arm3		  | 3 lines of att/boss/dmg								|
+
+
+
+
+
+
