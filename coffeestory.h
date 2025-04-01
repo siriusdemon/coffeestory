@@ -13,6 +13,31 @@ struct Rule {
 
 using RuleMap = std::map<std::string, std::vector<Rule>>;
 
+
+// rebirth flame
+RuleMap FlameRules = {
+    // normal armor
+    {"allatt",  {{2, {"att", "all"}}}},
+    {"hpatt",   {{2, {"att", "hp"}}}},
+    {"lukatt",  {{2, {"att", "luk", "all"}}}},
+    {"dexatt",  {{2, {"att", "dex", "all"}}}},
+    {"intatt",  {{2, {"att", "int", "all"}}}},
+    {"stratt",  {{2, {"att", "str", "all"}}}},
+    {"lukatt3", {{3, {"att", "luk", "all"}}}},
+    {"dexatt3", {{3, {"att", "dex", "all"}}}},
+    {"intatt3", {{3, {"att", "int", "all"}}}},
+    {"stratt3", {{3, {"att", "str", "all"}}}},
+    {"lukarm3", {{3, {"att", "boss", "dmg", "all", "luk"}}}},
+    {"dexarm3", {{3, {"att", "boss", "dmg", "all", "dex"}}}},
+    {"intarm3", {{3, {"att", "boss", "dmg", "all", "int"}}}},
+    {"strarm3", {{3, {"att", "boss", "dmg", "all", "str"}}}},
+    {"hparm3",  {{3, {"att", "boss", "dmg", "all", "hp"}}}},
+    {"allarm3", {{3, {"att", "boss", "dmg", "all"}}}},
+    {"arm2", {{2, {"att", "boss", "dmg"}}}},
+    {"arm3", {{3, {"att", "boss", "dmg"}}}},
+};
+
+
 RuleMap Rules = {
     // cd hat
     {"cd1", {{1, {"cd"}}}},

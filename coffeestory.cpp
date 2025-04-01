@@ -170,6 +170,47 @@ static std::vector<cv::Mat> redCubePotential() {
 }
 
 
+static std::vector<cv::Mat> blackFlame() {
+    int plus = 103;
+    int left = 600 + 2;
+    int right = 730;
+    int top = 367 + plus;
+    int bottom = 534 + plus;
+
+    // Define the region of interest
+    std::vector<int> region{ left, top, right, bottom };
+    ScreenshotCapture& capture = ScreenshotCapture::Instance();
+    cv::Mat flame = capture.capture(region);
+
+    int ma = 5;
+    int interval = 9;
+
+    // Extracting lines
+    cv::Mat line1 = flame(cv::Rect(0, 0, flame.cols, interval));
+    cv::Mat line2 = flame(cv::Rect(0, interval + ma, flame.cols, interval));
+    cv::Mat line3 = flame(cv::Rect(0, interval * 2 + 2 * ma, flame.cols, interval));
+    cv::Mat line4 = flame(cv::Rect(0, interval * 3 + ma * 3, flame.cols, interval));
+    cv::Mat line5 = flame(cv::Rect(0, interval * 4 + ma * 4, flame.cols, interval));
+    cv::Mat line6 = flame(cv::Rect(0, interval * 5 + ma * 5, flame.cols, interval));
+
+    return std::vector<cv::Mat>{line1, line2, line3, line4, line5, line6};
+}
+
+
+// rebirth flame
+std::unordered_map<std::string, std::pair<std::string, int>> flameImageHub = {
+    {"boss", {"flame/boss.png", 30}},
+    {"att", {"flame/att.png", 30}},
+    {"matt", {"flame/matt.png", 30}},
+    {"dex", {"flame/dex.png", 30}},
+    {"str", {"flame/str.png", 30}},
+    {"int", {"flame/int.png", 30}},
+    {"luk", {"flame/luk.png", 30}},
+    {"all", {"flame/all.png", 50}},
+    {"hp", {"flame/hp.png", 50}},
+    {"dmg", {"flame/dmg.png", 50}}
+};
+
 
 std::unordered_map<std::string, std::pair<std::string, int>> imageHub = {
     {"boss", {"potential/boss.png", 30}},
@@ -191,8 +232,13 @@ std::unordered_map<std::string, std::pair<std::string, int>> imageHub = {
 
 std::unordered_map<std::string, cv::Mat> LoadedHub;
 
-static void load_hub() {
-    for (const auto& pair : imageHub) {
+
+static void load_hub(bool flame) {
+    std::unordered_map<std::string, std::pair<std::string, int>>& images = imageHub;
+    if (flame) {
+        images = flameImageHub;
+    }
+    for (const auto& pair : images) {
         const std::string& key = pair.first;
         const std::string& path = pair.second.first;
         int width = pair.second.second;
@@ -254,6 +300,69 @@ static void rollBlueCude() {
     msleep(2000);
 }
 
+static void rollBlackRebirthFlame() {
+    leftclick(683, 633);
+    msleep(200);
+    pressEnter();
+    msleep(200);
+    pressEnter();
+    msleep(200);
+    pressEnter();
+    msleep(2000);
+}
+
+static void matchFlame(int times, const std::vector<Rule>& groups) {
+    for (int i = 0; i < times; ++i) {
+        // got new lines 
+        std::vector<cv::Mat> lines = blackFlame();
+        std::vector<std::string> texts;
+
+        // Convert images to texts
+        for (const auto& line : lines) {
+            texts.push_back(img2text(line));
+        }
+
+        // Filter out "unknown" texts
+        texts.erase(std::remove(texts.begin(), texts.end(), "unknown"), texts.end());
+
+        // merge the texts;
+        std::string str;
+        for (auto& text : texts) {
+            str += text;
+            str += "\t";
+        }
+
+        printf("[%d/%d]: %s\n", i + 1, times, str.c_str());
+
+
+        // Iterate through each group
+        for (const auto& group : groups) {
+            int hit = group.hit;
+            const std::vector<std::string>& keys = group.key;
+            int count = 0;
+
+            for (const std::string& text : texts) {
+                if (std::find(keys.begin(), keys.end(), text) != keys.end()) {
+                    count++;
+                }
+            }
+
+            if (count >= hit) {
+                std::cout << "match! ";
+                for (const auto& key : keys) {
+                    std::cout << key << " ";
+                }
+                std::cout << std::endl;
+                return;
+            }
+        }
+
+        // Call reset function
+        rollBlackRebirthFlame();
+    }
+
+}
+
 
 static void match(int times, const std::vector<Rule>& groups, bool is_red = false) {
     auto potential = is_red ? redCubePotential : blueCubePotential;  
@@ -304,6 +413,7 @@ static void match(int times, const std::vector<Rule>& groups, bool is_red = fals
 void helpinfo() {
     printf("Usage: \n");
     printf("coffeestory [red/blue] [times] [target] \n");
+    printf("coffeestory flame [times] [target] \n");
 }
 
 
@@ -313,30 +423,46 @@ int main(int argc, char* argv[]) {
         return 0;
     }
     reset_maple();
-    // Load the image hub
-    load_hub();
-
     std::string kind = argv[1];
+
+    bool flame = false;
     bool is_red = false;
     if (kind == "red") {
         is_red = true;
+        load_hub(false);
     }
     else if (kind == "blue") {
         is_red = false;
+        load_hub(false);
+    }
+    else if (kind == "flame") {
+        flame = true;
+        load_hub(true);
     }
     else {
         helpinfo();
         return 0;
     }
+
+    // Load the image hub
     int times = std::stoi(argv[2]);
     std::string target = argv[3];
-    if (auto p = Rules.find(target); p != Rules.end()) {
-        match(times, p->second, is_red);
+    if (!flame) {
+        if (auto p = Rules.find(target); p != Rules.end()) {
+            match(times, p->second, is_red);
+        }
+        else {
+            std::cout << "target not found! " << target << std::endl;
+        }
     }
     else {
-        std::cout << "target not found! " << target << std::endl;
+        if (auto p = FlameRules.find(target); p != FlameRules.end()) {
+            matchFlame(times, p->second);
+        }
+        else {
+            std::cout << "target not found! " << target << std::endl;
+        }
     }
 
     return 0;
 }
-
